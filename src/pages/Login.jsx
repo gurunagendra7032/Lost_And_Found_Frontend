@@ -87,8 +87,9 @@ function Login() {
           className="submit"
           onClick={handleLogin}
         />
-      </div>
+      
       <div onClick={changeSingup}> Are you new user ?</div>
+      </div>
     </div>
   );
 }
