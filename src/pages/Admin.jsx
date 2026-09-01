@@ -17,7 +17,7 @@ function Admin() {
     const token = localStorage.getItem("token");
 
     // Total Found Items
-    fetch("http://localhost:8080/admin/Allfounditems", {
+    fetch("https://lostandfound-production-33dc.up.railway.app/admin/Allfounditems", {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -32,7 +32,7 @@ function Admin() {
 
 
     // Total Lost Items
-    fetch("http://localhost:8080/admin/AlllostItems", {
+    fetch("https://lostandfound-production-33dc.up.railway.app/admin/AlllostItems", {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -47,7 +47,7 @@ function Admin() {
 
 
     // Currently Stored Items
-    fetch("http://localhost:8080/admin/currentStorageItems", {
+    fetch("https://lostandfound-production-33dc.up.railway.app/admin/currentStorageItems", {
       headers: {
         Authorization: `Bearer ${token}`,
       },
