@@ -14,7 +14,7 @@ function Login() {
   }
 
   function changeSingupAdmin(){
-     navigate("/admin/SignUp");
+     navigate("/admin/Signup");
   }
 
   

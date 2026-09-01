@@ -13,7 +13,7 @@ import AdminFoundItems from './pages/AdminFoundItems.jsx'
 import AdminLostItems from './pages/AdminLostItems.jsx'
 import AdminCurrentStorageItems from './pages/AdminCurrentStorageItems.jsx'
 import AdminReturnItems from './pages/AdminReturnItems.jsx'
-import AdminSignup from './pages/AdminsignUp.jsx'
+import AdminSignup from './pages/AdminSignup.jsx'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -36,7 +36,7 @@ function App() {
        <Route path="/admin/CurrentStorageitems" element={<AdminCurrentStorageItems/>}/>
        <Route path="/admin/CurrentStorageitems" element={<AdminCurrentStorageItems/>}/>
        <Route path="/admin/returnItems" element={<AdminReturnItems/>}/>
-       <Route path="/admin/SignUp" element={<AdminSignup/>}/>
+       <Route path="/admin/Signup" element={<AdminSignup/>}/>
        
        
 
