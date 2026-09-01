@@ -38,7 +38,7 @@ function AdminSignup() {
 
         // Go to admin login after successful registration
         setTimeout(() => {
-          navigate("/admin/login");
+          navigate("/");
         }, 1000);
 
       } else {
