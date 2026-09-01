@@ -1,0 +1,92 @@
+
+* {
+  box-sizing: border-box;
+}
+
+.admin-signup-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: #f4f6f8;
+}
+
+.admin-signup-box {
+  width: 400px;
+  padding: 35px;
+
+  background: white;
+  border-radius: 12px;
+
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+.admin-signup-heading {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.admin-signup-heading h2 {
+  margin: 0 0 8px;
+
+  font-size: 27px;
+  color: #222;
+}
+
+.admin-signup-heading p {
+  margin: 0;
+
+  font-size: 14px;
+  color: #777;
+}
+
+.admin-signup-box form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.admin-signup-box input {
+  width: 100%;
+  padding: 13px 14px;
+
+  border: 1px solid #ccc;
+  border-radius: 7px;
+
+  font-size: 15px;
+  outline: none;
+}
+
+.admin-signup-box input:focus {
+  border-color: #222;
+}
+
+.admin-signup-box button {
+  width: 100%;
+  padding: 13px;
+
+  border: none;
+  border-radius: 7px;
+
+  background: #222;
+  color: white;
+
+  font-size: 16px;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.admin-signup-box button:hover {
+  background: #000;
+}
+
+.admin-signup-message {
+  text-align: center;
+  margin-top: 18px;
+
+  font-size: 14px;
+  color: #333;
+}
+

@@ -13,6 +13,12 @@ function Login() {
     navigate("/signup");   // ✅ Navigate using route path
   }
 
+  function changeSingupAdmin(){
+     navigate("/admin/SignUp");
+  }
+
+  
+
   async function handleLogin() {
     try {
       const res = await fetch("https://lostandfound-production-33dc.up.railway.app/login", {
@@ -89,6 +95,7 @@ function Login() {
         />
       
       <div onClick={changeSingup}> Are you new user ?</div>
+      <div onClick={changeSingupAdmin}> Are you new Admin ?</div>
       </div>
     </div>
   );
