@@ -1,21 +1,19 @@
 import React, { useState } from "react";
 import axios from "axios";
+import "./Found.css";  // Import the CSS file
 
 function Found() {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState("");
-  const [location,setLocation]=useState();
+  const [location, setLocation] = useState("");
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [image, setImage] = useState(null);
-  const [photo,setPhoto]=useState([]);
- 
- 
+  const [photo, setPhoto] = useState([]);
 
   async function FileSubmit() {
-    
-    if (!image || !title || !description) {
+    if (!image || !title || !description || !location) {
       setError("All fields are required");
       return;
     }
@@ -39,6 +37,10 @@ function Found() {
       await Bar();
 
       setSuccess(true);
+      setTitle("");
+      setDescription("");
+      setLocation("");
+      setImage(null);
     } catch (err) {
       console.error(err);
       setError("Upload failed");
@@ -46,98 +48,98 @@ function Found() {
       setLoading(false);
     }
   }
- 
 
   async function sendToBackend(imageUrl) {
     const token = localStorage.getItem("token");
-    const response = await fetch("https://lostandfound-production-33dc.up.railway.app/api/save", {
+    await fetch("https://lostandfound-production-33dc.up.railway.app/api/save", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json", 
+        "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({
         imageName: title,
-        imageUrl: imageUrl,
+        imageUrl,
         imageDescription: description,
-        location:location,
+        location,
       }),
-     
-     
     });
-    
   }
-
-  
-
 
   async function Bar() {
-  try {
-    const token = localStorage.getItem("token");
-    console.log(token);
-
-    const res1 = await fetch("https://lostandfound-production-33dc.up.railway.app/api/details", {
-      method: "GET",
-      headers: {
+    try {
+      const token = localStorage.getItem("token");
+      const res1 = await fetch("https://lostandfound-production-33dc.up.railway.app/api/details", {
+        method: "GET",
+        headers: {
           Authorization: `Bearer ${token}`,
         },
-    });
-  
-    const data = await res1.json();   // convert response to json
-    // console.log(data);
-       setPhoto(data)          // use data
-    // return data;
-     } catch (error) {
-    console.log(error);
+      });
+
+      const data = await res1.json();
+      setPhoto(data);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
- 
-   }
-  
-    
-  
-
   return (
-    <>
-    <div style={{ padding: "20px" }}>
-      <h2>Upload Found Item Image</h2>
+    <div className="found-container">
+      <h2 className="title">📦 Upload Found Item</h2>
 
-      <input
-        type="text"
-        placeholder="Enter the Image Title"
-        onChange={(e) => setTitle(e.target.value)}
-      />
+      <div className="form">
+        <input
+          type="text"
+          placeholder="Enter the Image Title"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+        />
 
-      <input
-        type="text"
-        placeholder="Enter Image Description"
-        onChange={(e) => setDescription(e.target.value)}
-      />
+        <input
+          type="text"
+          placeholder="Enter Image Description"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+        />
 
-      <input
-        type="file"
-        onChange={(e) => setImage(e.target.files[0])}
-      />
+        <input
+          type="file"
+          onChange={(e) => setImage(e.target.files[0])}
+        />
 
-       <input
-        type="text"
-        placeholder="Enter location"
-        onChange={(e) => setLocation(e.target.value)}
-      />
+        <input
+          type="text"
+          placeholder="Enter Location"
+          value={location}
+          onChange={(e) => setLocation(e.target.value)}
+        />
 
-      <button onClick={FileSubmit} disabled={loading}>
-        {loading ? "Uploading..." : "Upload"}
-      </button>
+        <button onClick={FileSubmit} disabled={loading}>
+          {loading ? "Uploading..." : "Upload"}
+        </button>
 
-      {success && <p style={{ color: "green" }}>File Uploaded Successfully ✅</p>}
-      {error && <p style={{ color: "red" }}>{error}</p>}
+        {success && <p className="success">✅ File Uploaded Successfully</p>}
+        {error && <p className="error">❌ {error}</p>}
+      </div>
+
+      <div className="images-bar">
+        <h3>Uploaded Items</h3>
+        {photo.length > 0 ? (
+          <div className="grid">
+            {photo.map((item, index) => (
+              <div key={index} className="card">
+                <img src={item.imageUrl} alt={item.imageName} />
+                <h4>{item.imageName}</h4>
+                <p>{item.imageDescription}</p>
+                <span className="location">📍 {item.location}</span>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <p>No items found yet.</p>
+        )}
+      </div>
     </div>
-   <div className="ImagesBar">
- 
- 
-</div>
-
-    </>
   );
 }
 
