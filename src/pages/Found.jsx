@@ -85,7 +85,7 @@ function Found() {
 
   return (
     <div className="found-container">
-      <h2 className="title">📦 Upload Found Item</h2>
+      <h2 className="title"> Upload Your Found Item</h2>
 
       <div className="form">
         <input
@@ -118,7 +118,7 @@ function Found() {
           {loading ? "Uploading..." : "Upload"}
         </button>
 
-        {success && <p className="success">✅ File Uploaded Successfully</p>}
+        {success && <p className="success"> Image Uploaded Successfully...</p>}
         {error && <p className="error">❌ {error}</p>}
       </div>
 
