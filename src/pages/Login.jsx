@@ -9,7 +9,7 @@ function Login() {
 
   const navigate = useNavigate();
 
- function changeSignup() {
+ function changeSingup() {
     navigate("/signup");   // ✅ Navigate using route path
   }
 
