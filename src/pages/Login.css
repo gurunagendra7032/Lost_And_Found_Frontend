@@ -1,0 +1,38 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+.Login{
+    border:2px solid black;
+    border-radius: 10px;
+    height: 300px;
+    width: 400px;
+   padding-left: 20px;
+}
+
+.fields{
+    width:350px;
+    height:30px;
+    margin-top: 20px;
+    background-color: aquamarine;
+    border: none;
+    border-radius: 10px;
+    padding-left:10px ;
+}
+.submit{
+    height: 30px;
+    width: 150px;
+    margin:20px;
+    margin-left: 90px;
+   
+}
+.heading{
+    margin-left: 140px;
+} 
+.page{
+    display: flex;
+    justify-content: center;
+    padding-top: 200px;
+}
