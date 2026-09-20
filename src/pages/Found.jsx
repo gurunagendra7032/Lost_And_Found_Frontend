@@ -131,7 +131,7 @@ function Found() {
                 <img src={item.imageUrl} alt={item.imageName} />
                 <h4>{item.imageName}</h4>
                 <p>{item.imageDescription}</p>
-                <span className="location">📍 {item.location}</span>
+                <span className="location">Location : {item.location}</span>
               </div>
             ))}
           </div>
