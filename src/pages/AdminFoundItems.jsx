@@ -167,7 +167,7 @@ function AdminFoundItems() {
 
                                     <td>
 
-                                        {item.status === "WITH_ADMIN" ? (
+                                        {item.status === "FOUND" ? (
 
                                             <button
                                                 onClick={() =>

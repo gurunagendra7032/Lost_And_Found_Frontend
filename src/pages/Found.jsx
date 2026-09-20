@@ -62,6 +62,7 @@ function Found() {
         imageUrl,
         imageDescription: description,
         location,
+        
       }),
     });
   }
