@@ -119,7 +119,7 @@ function Found() {
         </button>
 
         {success && <p className="success"> Image Uploaded Successfully...</p>}
-        {error && <p className="error">❌ {error}</p>}
+        {error && <p className="error"> {error}</p>}
       </div>
 
       <div className="images-bar">
