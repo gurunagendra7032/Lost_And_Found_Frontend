@@ -43,7 +43,7 @@ function AdminFoundItems() {
         try {
 
             const response = await fetch(
-                `https://lostandfound-production-33dc.up.railway.app/admin/founditems/reference/${reference}/status`,
+                `https://lostandfound-production-33dc.up.railway.app/admin/{reference}/status`,
                 {
                     method: "PUT",
                     headers: {
