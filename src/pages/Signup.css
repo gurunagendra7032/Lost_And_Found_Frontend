@@ -1,40 +1,116 @@
-* {
+
+/* Full page */
+.page {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #eef3f8;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Signup card */
+.signup {
+  width: 380px;
+  padding: 35px 40px;
+  background: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.10);
+}
+
+/* Heading */
+.heading {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.heading h3 {
   margin: 0;
-  padding: 0;
+  font-size: 28px;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+/* Input container */
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* All normal inputs */
+.input {
+  width: 100%;
   box-sizing: border-box;
-  font-family: 'Segoe UI', sans-serif;
+  padding: 13px 15px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  background: #f8fafc;
+  color: #1f2937;
+  font-size: 15px;
+  outline: none;
+  transition: all 0.2s ease;
 }
-.page{
-    display: flex;
-    justify-content: center;
-    padding-top: 180px;
+
+/* Placeholder */
+.input::placeholder {
+  color: #94a3b8;
 }
-.signup{
-    height:400px;
-    width:350px;
-    border: 2px solid black;
-    border-radius: 10px;
+
+/* Input when clicked */
+.input:focus {
+  background: #ffffff;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
 }
-.input{
-    height: 35px;
-    width: 300px;
-    margin-left: 20px;
-    border-radius: 10px;
-    padding-left: 10px;
-    margin-bottom: 20px;
-    border: none;
-    background-color: aquamarine;
+
+/* Submit button */
+.submit {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 13px 15px;
+  border: none;
+  border-radius: 8px;
+  background: #2563eb;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s ease;
 }
-.details{
-    margin-top: 80px;
+
+/* Submit hover */
+.submit:hover {
+  background: #1d4ed8;
 }
-.submit{
-    height: 25px;
-    width: 120px;
-    margin-left: 100px;
+
+/* Submit click */
+.submit:active {
+  transform: scale(0.98);
 }
-.heading{
-    margin-left: 80px;
-    padding-top: 20px;
-    box-sizing: border-box;
+
+/* Return/error message */
+.return {
+  text-align: center;
+  margin-top: 18px;
 }
+
+.return p {
+  margin: 0;
+  color: #dc2626;
+  font-size: 14px;
+}
+
+/* Mobile */
+@media (max-width: 500px) {
+  .signup {
+    width: calc(100% - 40px);
+    padding: 30px 25px;
+  }
+
+  .heading h3 {
+    font-size: 24px;
+  }
+}
+
