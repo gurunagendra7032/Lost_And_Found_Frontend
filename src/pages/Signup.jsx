@@ -8,6 +8,7 @@ function Signup() {
   const [name, setName] = useState();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
+  const [code, setCode] = useState();
   const [retur, setRetur] = useState();
 
   const navigate = useNavigate();
@@ -25,6 +26,7 @@ function Signup() {
           name: name,
           email: email,
           password: password,
+          Code:code,
         }),
       }
     );
@@ -70,6 +72,13 @@ function Signup() {
               placeholder="Enter Your Password"
               className="input"
               onChange={(e) => setPassword(e.target.value)}
+            />
+
+              <input
+              type="text"
+              placeholder="Enter Your Code"
+              className="input"
+              onChange={(e) => setCode(e.target.value)}
             />
 
             <input
