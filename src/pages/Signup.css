@@ -1,116 +1,262 @@
 
-/* Full page */
-.page {
-  min-height: 100vh;
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
   width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #eef3f8;
+  min-height: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-/* Signup card */
-.signup {
-  width: 380px;
-  padding: 35px 40px;
-  background: #ffffff;
-  border-radius: 14px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.10);
+
+/* =================================
+   PAGE
+================================= */
+
+.page {
+  width: 100%;
+  min-height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 30px 20px;
+
+  background: #eef2f7;
 }
 
-/* Heading */
+
+/* =================================
+   SIGNUP CARD
+================================= */
+
+.signup {
+  width: 420px;
+  max-width: 100%;
+
+  padding: 38px 40px;
+
+  background: #ffffff;
+
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
+
+  box-shadow: 0 15px 40px rgba(15, 23, 42, 0.08);
+}
+
+
+/* =================================
+   HEADER
+================================= */
+
 .heading {
+  width: 100%;
+
+  margin: 0 0 28px;
+
   text-align: center;
-  margin-bottom: 28px;
 }
 
 .heading h3 {
   margin: 0;
+
+  color: #172033;
+
   font-size: 28px;
   font-weight: 600;
-  color: #1f2937;
+
+  line-height: 1.3;
+
+  text-align: center;
 }
 
-/* Input container */
+.heading p {
+  margin: 8px 0 0;
+
+  color: #718096;
+
+  font-size: 14px;
+
+  line-height: 1.4;
+
+  text-align: center;
+}
+
+
+/* =================================
+   FORM
+================================= */
+
 .details {
+  width: 100%;
+
   display: flex;
   flex-direction: column;
+
   gap: 16px;
 }
 
-/* All normal inputs */
+
+/* =================================
+   INPUT GROUP
+================================= */
+
+.input-group {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 6px;
+}
+
+.input-group label {
+  margin: 0;
+
+  color: #344054;
+
+  font-size: 14px;
+  font-weight: 500;
+}
+
+
+/* =================================
+   INPUT
+================================= */
+
 .input {
   width: 100%;
-  box-sizing: border-box;
-  padding: 13px 15px;
-  border: 1px solid #cbd5e1;
+  height: 46px;
+
+  padding: 0 14px;
+
+  border: 1px solid #d0d5dd;
   border-radius: 8px;
-  background: #f8fafc;
-  color: #1f2937;
-  font-size: 15px;
+
   outline: none;
-  transition: all 0.2s ease;
+
+  background: #f9fafb;
+
+  color: #1d2939;
+
+  font-size: 15px;
+
+  transition: 0.2s ease;
 }
 
-/* Placeholder */
 .input::placeholder {
-  color: #94a3b8;
+  color: #98a2b3;
 }
 
-/* Input when clicked */
+.input:hover {
+  border-color: #98a2b3;
+}
+
 .input:focus {
   background: #ffffff;
-  border-color: #2563eb;
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+
+  border-color: #3b82f6;
+
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.12);
 }
 
-/* Submit button */
+
+/* =================================
+   SUBMIT
+================================= */
+
 .submit {
   width: 100%;
-  box-sizing: border-box;
-  padding: 13px 15px;
+  height: 46px;
+
+  margin-top: 5px;
+
+  padding: 0;
+
   border: none;
   border-radius: 8px;
+
   background: #2563eb;
+
   color: #ffffff;
-  font-size: 16px;
+
+  font-size: 15px;
   font-weight: 600;
+
   cursor: pointer;
-  transition: background 0.2s ease, transform 0.1s ease;
+
+  transition: 0.2s ease;
 }
 
-/* Submit hover */
 .submit:hover {
   background: #1d4ed8;
 }
 
-/* Submit click */
 .submit:active {
-  transform: scale(0.98);
+  transform: scale(0.99);
 }
 
-/* Return/error message */
+
+/* =================================
+   RETURN MESSAGE
+================================= */
+
 .return {
+  width: 100%;
+
+  margin-top: 15px;
+
   text-align: center;
-  margin-top: 18px;
 }
 
 .return p {
   margin: 0;
+
   color: #dc2626;
+
   font-size: 14px;
+
+  line-height: 20px;
+
+  text-align: center;
 }
 
-/* Mobile */
+
+/* =================================
+   MOBILE
+================================= */
+
 @media (max-width: 500px) {
+
+  .page {
+    padding: 25px 15px;
+  }
+
   .signup {
-    width: calc(100% - 40px);
-    padding: 30px 25px;
+    width: 100%;
+
+    padding: 32px 25px;
+  }
+
+  .heading {
+    margin-bottom: 25px;
   }
 
   .heading h3 {
-    font-size: 24px;
+    font-size: 25px;
+  }
+
+  .details {
+    gap: 15px;
   }
 }
 

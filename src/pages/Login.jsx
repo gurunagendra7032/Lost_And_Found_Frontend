@@ -71,7 +71,7 @@ function Login() {
   return (
     <div className="page">
       <div className="Login">
-        <h2 className="heading">Login</h2>
+        <h2 className="headinglogin">Login</h2>
 
         <input
           type="text"

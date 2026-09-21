@@ -4,17 +4,15 @@ import { useNavigate } from "react-router-dom";
 import "./Signup.css";
 
 function Signup() {
-
-  const [name, setName] = useState();
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
-  const [code, setCode] = useState();
-  const [retur, setRetur] = useState();
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [code, setCode] = useState("");
+  const [retur, setRetur] = useState("");
 
   const navigate = useNavigate();
 
   async function Submit() {
-
     const res = await fetch(
       "https://lostandfound-production-33dc.up.railway.app/signup",
       {
@@ -26,7 +24,7 @@ function Signup() {
           name: name,
           email: email,
           password: password,
-          Code:code,
+          Code: code,
         }),
       }
     );
@@ -34,68 +32,82 @@ function Signup() {
     const message = await res.text();
 
     if (res.ok) {
-      // Registration successful
       navigate("/");
     } else {
-      // Registration failed
       setRetur(message);
     }
   }
 
   return (
-    <>
-      <div className="page">
-        <div className="signup">
+    <div className="page">
+      <div className="signup">
 
-          <div className="heading">
-            <h3>Registration</h3>
-          </div>
+        <div className="heading">
+          <h3>Registration</h3>
+          <p>Create your account</p>
+        </div>
 
-          <div className="details">
+        <div className="details">
 
+          <div className="input-group">
+            <label>Name</label>
             <input
               type="text"
-              placeholder="Enter Your Name"
+              placeholder="Enter your name"
               className="input"
+              value={name}
               onChange={(e) => setName(e.target.value)}
             />
+          </div>
 
+          <div className="input-group">
+            <label>Email</label>
             <input
               type="email"
-              placeholder="Enter your Email"
+              placeholder="Enter your email"
               className="input"
+              value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
+          </div>
 
+          <div className="input-group">
+            <label>Password</label>
             <input
               type="password"
-              placeholder="Enter Your Password"
+              placeholder="Enter your password"
               className="input"
+              value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
+          </div>
 
-              <input
+          <div className="input-group">
+            <label>Code</label>
+            <input
               type="text"
-              placeholder="Enter Your Code"
+              placeholder="Enter your code"
               className="input"
+              value={code}
               onChange={(e) => setCode(e.target.value)}
             />
-
-            <input
-              type="submit"
-              className="submit"
-              onClick={Submit}
-            />
-
           </div>
 
-          <div className="return">
-            <p>{retur}</p>
-          </div>
+          <input
+            type="submit"
+            value="Register"
+            className="submit"
+            onClick={Submit}
+          />
 
         </div>
+
+        <div className="return">
+          <p>{retur}</p>
+        </div>
+
       </div>
-    </>
+    </div>
   );
 }
 
