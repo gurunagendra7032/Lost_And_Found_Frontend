@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
@@ -9,28 +10,29 @@ function Login() {
 
   const navigate = useNavigate();
 
- function changeSingup() {
-    navigate("/signup");   // ✅ Navigate using route path
+  function changeSingup() {
+    navigate("/signup");
   }
 
-  function changeSingupAdmin(){
-     navigate("/admin/Signup");
+  function changeSingupAdmin() {
+    navigate("/admin/Signup");
   }
-
-  
 
   async function handleLogin() {
     try {
-      const res = await fetch("https://lostandfound-production-33dc.up.railway.app/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email,
-          password,
-        }),
-      });
+      const res = await fetch(
+        "https://lostandfound-production-33dc.up.railway.app/login",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email,
+            password,
+          }),
+        }
+      );
 
       if (!res.ok) {
         alert("Invalid email or password");
@@ -61,7 +63,6 @@ function Login() {
       } else {
         alert("Unknown role");
       }
-
     } catch (error) {
       console.error("Login error:", error);
       alert("Something went wrong");
@@ -69,33 +70,65 @@ function Login() {
   }
 
   return (
-    <div className="page">
-      <div className="Login">
-        <h2 className="headinglogin">Login</h2>
+    <div className="login-page">
+      <div className="login-card">
 
-        <input
-          type="text"
-          placeholder="Enter Your Email"
-          className="fields"
-          onChange={(e) => setEmail(e.target.value)}
-        />
+        <div className="login-header">
+          <h2>Welcome Back</h2>
+          <p>Login to your Lost & Found account</p>
+        </div>
 
-        <input
-          type="password"
-          placeholder="Enter Your Password"
-          className="fields"
-          onChange={(e) => setPassword(e.target.value)}
-        />
+        <div className="login-form">
 
-        <input
-          type="submit"
-          value="Login"
-          className="submit"
-          onClick={handleLogin}
-        />
-      
-      <div onClick={changeSingup}> Are you new user ?</div>
-      <div onClick={changeSingupAdmin}> Are you new Admin ?</div>
+          <div className="login-input-group">
+            <label>Email</label>
+
+            <input
+              type="text"
+              placeholder="Enter your email"
+              className="login-field"
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
+
+          <div className="login-input-group">
+            <label>Password</label>
+
+            <input
+              type="password"
+              placeholder="Enter your password"
+              className="login-field"
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </div>
+
+          <input
+            type="submit"
+            value="Login"
+            className="login-submit"
+            onClick={handleLogin}
+          />
+
+        </div>
+
+        <div className="login-links">
+
+          <div
+            className="login-link"
+            onClick={changeSingup}
+          >
+            Are you a new user?
+          </div>
+
+          <div
+            className="login-link admin-link"
+            onClick={changeSingupAdmin}
+          >
+            Are you a new Admin?
+          </div>
+
+        </div>
+
       </div>
     </div>
   );

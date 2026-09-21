@@ -12,7 +12,8 @@ function Signup() {
 
   const navigate = useNavigate();
 
-  async function Submit() {
+async function Submit() {
+  try {
     const res = await fetch(
       "https://lostandfound-production-33dc.up.railway.app/signup",
       {
@@ -36,7 +37,11 @@ function Signup() {
     } else {
       setRetur(message);
     }
+  } catch (error) {
+    console.error(error);
+    setRetur("Unable to connect to the server.");
   }
+}
 
   return (
     <div className="page">
