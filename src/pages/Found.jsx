@@ -123,23 +123,7 @@ function Found() {
         {error && <p className="error"> {error}</p>}
       </div>
 
-      <div className="images-bar">
-        <h3>Uploaded Items</h3>
-        {photo.length > 0 ? (
-          <div className="grid">
-            {photo.map((item, index) => (
-              <div key={index} className="card">
-                <img src={item.imageUrl} alt={item.imageName} />
-                <h4>{item.imageName}</h4>
-                <p>{item.imageDescription}</p>
-                <span className="location">Location : {item.location}</span>
-              </div>
-            ))}
-          </div>
-        ) : (
-          <p>No items found yet.</p>
-        )}
-      </div>
+    
     </div>
   );
 }

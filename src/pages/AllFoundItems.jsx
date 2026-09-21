@@ -1,26 +1,26 @@
-import React from 'react'
-import {useState,useEffect} from 'react'
+
+import React from "react";
+import { useState, useEffect } from "react";
+import "./AllFoundItems.css";
+
 function AllFoundItems() {
+  const [image, setImage] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [getimage, setGetImage] = useState();
 
+  useEffect(() => {
+    const token = localStorage.getItem("token");
 
-     const [image,setImage]=useState([]);
-     const [loading, setLoading] = useState(true);
-     const [getimage,setGetImage]=useState();
-    
-
-    useEffect(() => {
-      const token=localStorage.getItem("token");
-    fetch("https://lostandfound-production-33dc.up.railway.app/api/details",
+    fetch(
+      "https://lostandfound-production-33dc.up.railway.app/api/details",
       {
-
         method: "GET",
-         headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,   // ✅ ADD THIS
-         },
-        })
-
-     // change if needed
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    )
       .then((res) => {
         if (!res.ok) {
           throw new Error("Failed to fetch images");
@@ -35,93 +35,112 @@ function AllFoundItems() {
         console.error("Error:", err);
         setLoading(false);
       });
-  }, [])
+  }, []);
 
   const deleteItem = (id) => {
     const token = localStorage.getItem("token");
-  fetch(`https://lostandfound-production-33dc.up.railway.app/api/deletefounditem/${id}`, {
-    method: "DELETE",
-     headers: {
-      "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,   // ✅ ADD THIS
-         },
-  })
-    .then((res) => {
-      if (!res.ok) {
-        throw new Error("Failed to delete");
-      }
 
-      setImage(image.filter((img) => img.id !== id));
-    })
-    .catch((err) => {
-      console.error("Delete error:", err);
-    });
+    fetch(
+      `https://lostandfound-production-33dc.up.railway.app/api/deletefounditem/${id}`,
+      {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    )
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error("Failed to delete");
+        }
+
+        setImage(image.filter((img) => img.id !== id));
+      })
+      .catch((err) => {
+        console.error("Delete error:", err);
+      });
   };
 
   const searchItem = () => {
+    const token = localStorage.getItem("token");
 
-  const token = localStorage.getItem("token");
-
-  fetch(`https://lostandfound-production-33dc.up.railway.app/found/search?keyword=${getimage}`, {
-
-    method: "GET",
-
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
-    },
-
-  })
-    .then((res) => res.json())
-    .then((data) => {
-      setImage(data);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-};
-
-    
-
+    fetch(
+      `https://lostandfound-production-33dc.up.railway.app/found/search?keyword=${getimage}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        setImage(data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   return (
-   <>
-   <nav ><input type="search" placeholder="Enter Item" onChange={(e)=>setGetImage(e.target.value)}/><button type='submit' onClick={searchItem}>submit</button>
-    </nav>
-   <div>
-       <div style={{ textAlign: "center" }}>
-      <h2>Image Gallery</h2>
-
-      {image.length === 0 ? (
-        <p>No images found</p>
-      ) : (
-        <div style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))",
-          gap: "10px",
-          padding: "20px"
-        }}>
-          {image.map((img) => (
-            <div key={img.id}>
-              <img
-                src={img.imageUrl} // must match backend field
-                alt="img"
-                style={{
-                  width: "100%",
-                  height: "200px",
-                  objectFit: "cover",
-                  borderRadius: "10px"
-                }}
-              />
-              <button onClick={()=>deleteItem(img.id)}> Delete </button>
-            </div>
-          ))}
+    <div className="found-page">
+      <nav className="found-navbar">
+        <div className="search-box">
+          <input
+            type="search"
+            placeholder="Search found item..."
+            value={getimage || ""}
+            onChange={(e) => setGetImage(e.target.value)}
+          />
+          <button type="submit" onClick={searchItem}>
+            Search
+          </button>
         </div>
-      )}
+      </nav>
+
+      <main className="found-container">
+        <div className="found-header">
+          <h2>Found Items</h2>
+          <p>Browse all items that have been reported as found.</p>
+        </div>
+
+        {loading ? (
+          <div className="loading-message">
+            <p>Loading items...</p>
+          </div>
+        ) : image.length === 0 ? (
+          <div className="empty-message">
+            <p>No found items available.</p>
+          </div>
+        ) : (
+          <div className="found-grid">
+            {image.map((img) => (
+              <div className="found-card" key={img.id}>
+                <div className="image-wrapper">
+                  <img
+                    src={img.imageUrl}
+                    alt="Found item"
+                  />
+                </div>
+
+                <div className="card-content">
+                  <button
+                    className="delete-button"
+                    onClick={() => deleteItem(img.id)}
+                  >
+                    Delete
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+      </main>
     </div>
-   </div>
-   </>
-  )
+  );
 }
 
-export default AllFoundItems
+export default AllFoundItems;
+

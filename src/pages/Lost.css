@@ -1,0 +1,219 @@
+
+.lost-container {
+  min-height: 100vh;
+  background: #f5f7fb;
+  padding: 40px 20px;
+  box-sizing: border-box;
+}
+
+/* Main title */
+
+.title {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #222;
+  font-size: 30px;
+}
+
+/* Upload form */
+
+.form {
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto;
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-sizing: border-box;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Text inputs */
+
+.form input[type="text"] {
+  width: 100%;
+  padding: 13px 14px;
+  border: 1px solid #d6d6d6;
+  border-radius: 7px;
+  font-size: 15px;
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease;
+}
+
+.form input[type="text"]:focus {
+  border-color: #2563eb;
+}
+
+/* File input */
+
+.form input[type="file"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px dashed #b8b8b8;
+  border-radius: 7px;
+  box-sizing: border-box;
+  background: #fafafa;
+  cursor: pointer;
+}
+
+.form input[type="file"]::file-selector-button {
+  background: #2563eb;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 5px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.form input[type="file"]::file-selector-button:hover {
+  background: #1d4ed8;
+}
+
+/* Upload button */
+
+.form button {
+  width: 100%;
+  padding: 13px;
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 7px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.form button:hover {
+  background: #1d4ed8;
+}
+
+.form button:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
+}
+
+/* Messages */
+
+.success {
+  text-align: center;
+  color: #16a34a;
+  font-weight: 500;
+  margin: 0;
+}
+
+.error {
+  text-align: center;
+  color: #dc2626;
+  font-weight: 500;
+  margin: 0;
+}
+
+/* Uploaded items section */
+
+.images-bar {
+  max-width: 1100px;
+  margin: 45px auto 0;
+}
+
+.images-bar h3 {
+  text-align: center;
+  font-size: 24px;
+  color: #222;
+  margin-bottom: 25px;
+}
+
+/* Cards grid */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 25px;
+}
+
+/* Item card */
+
+.card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  padding-bottom: 18px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.12);
+}
+
+/* Item image */
+
+.card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+}
+
+/* Item title */
+
+.card h4 {
+  margin: 15px 16px 8px;
+  font-size: 18px;
+  color: #222;
+}
+
+/* Description */
+
+.card p {
+  margin: 0 16px 12px;
+  color: #666;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* Location */
+
+.location {
+  display: block;
+  margin: 0 16px;
+  color: #555;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* Mobile */
+
+@media (max-width: 600px) {
+
+  .lost-container {
+    padding: 25px 15px;
+  }
+
+  .title {
+    font-size: 25px;
+  }
+
+  .form {
+    padding: 22px;
+  }
+
+  .images-bar {
+    margin-top: 35px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card img {
+    height: 230px;
+  }
+}
