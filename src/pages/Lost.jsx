@@ -1,7 +1,7 @@
 
 import axios from "axios";
 import React, { useState } from "react";
-import "./Lost.css";
+import "./Lost.css"
 
 function Lost() {
   const [filename, setFilename] = useState("");
