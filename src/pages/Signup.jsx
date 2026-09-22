@@ -25,7 +25,7 @@ async function Submit() {
           name: name,
           email: email,
           password: password,
-          Code: code,
+          code: code,
         }),
       }
     );
